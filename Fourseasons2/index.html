@@ -6,7 +6,7 @@
   <link href="./src/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/yys3cpp.css">
 </head>
-<body class=" transition-all duration-1000 select-none">
+<body class=" transition-all duration-1000 select-none max-sm:overflow-hidden">
   <div class="noise"></div>
 
   <div id="cursor-dot" class="fixed top-0 z-20 pointer-events-none left-0 translate-x-[-50%] translate-y-[-50%] w-[100%] h-[100%] rounded-3xl ]">
@@ -17,23 +17,30 @@
 
   <!-- body -->
 
-    <div class="mainsection grid grid-cols-4 grid-rows-3 h-[95vh] m-6 ml-6 mr-6 mx-auto gap-4
-                max-sm:grid-cols-[2fr] max-sm:grid-rows-[8fr]" >
+    <div class="mainsection grid grid-cols-4 grid-rows-3 h-[95vh] m-6 ml-6 mr-6 mx-auto gap-[2vw]
+                max-sm:grid-cols-[2fr] max-sm:grid-rows-[8fr] max-sm:m-[2vw] max-sm:h-[98vh]">
       
 <!-- header -->
   <!-- normal header -->
+
       <div id="item1" class="ritem items-center justify-center gap-10
-                  max-sm:row-start-1 max-sm:row-end-2 max-sm:col-start-1 max-sm:col-end-2">
+                  max-sm:row-start-1 max-sm:row-end-2 max-sm:col-start-1 max-sm:col-end-3 max-sm:w-[96vw] max-sm:h[100%]">
         <p class="z-10 font-extrabold text-3xl">Change Theme</p>
         <label class="z-10 switch relative h-[50px] w-[100px] duration-150">
           <input type="checkbox" name="" id="switchtheme">
           <span class="z-10  slider rounded-[50px] round absolute cursor-none bottom-0 left-0 right-0 top-0 border-2 border-solid border-[var(--secondary-color)]"></span>
         </label>
-        
+          <!-- burger header -->
+
+          <div class="burger sm:hidden">
+
+          </div>
+      
+  <!-- burger header -->
       </div>
 
-      <div class="ritem place-content-center col-span-3 flex justify-around items-center max-sm:row-start-1 max-sm:row-end-2 max-sm:col-start-2 max-sm:col-end-3 ">
-            <nav class="w-[100%] max-sm:hidden flex justify-around">
+      <div class="ritem place-content-center col-span-3 flex justify-around items-center max-sm:row-start-1 max-sm:row-end-2 max-sm:col-start-2 max-sm:col-end-3 max-sm:hidden max-sm:p-0">
+            <nav class="w-[100%] flex justify-around">
               <a href="" class="z-10 text-3xl font-extrabold transition-transform hover:scale-110 underline underline-offset-0 decoration-transparent hover:decoration-[var(--secondary-color)] hover:underline-offset-8">Home</a>
               <a href="" class="z-10 text-3xl font-extrabold transition-transform hover:scale-110 underline underline-offset-0 decoration-transparent hover:decoration-[var(--secondary-color)] hover:underline-offset-8">About</a>
               <a href="" class="z-10 text-3xl font-extrabold transition-transform hover:scale-110 underline underline-offset-0 decoration-transparent hover:decoration-[var(--secondary-color)] hover:underline-offset-8">Contact us</a>
@@ -43,29 +50,22 @@
       </div>
   <!-- normal header -->
 
-  <!-- burger header -->
-      <div class="burger hidden max-sm:block">
-        
-      </div>
-  <!-- burger header -->
-
-
 <!-- header -->
 <!-- main -->
 
 
 
         <div class="ritem
-                    max-sm:row-start-4 max-sm:row-end-5 max-sm:col-start-1 max-sm:col-end-2">
+                    max-sm:row-start-4 max-sm:row-end-5 max-sm:col-start-1 max-sm:col-end-2 max-sm:w-[47vw]">
             <p id="animWords" class="z-10">Für diese Webseite habe ich <span class="z-10 font-extrabold italic">Tailwind</span>, <span class="z-10 font-extrabold italic">Vite</span>, <span class="z-10 font-extrabold italic">JavaScript</span>, <span class="z-10 font-extrabold italic">GSAP</span> und Plugins wie <span class="z-10 font-extrabold italic">Split-Type</span> zum ersten Mal in meiner Webdesign-Karriere verwendet. Momentan befinde ich mich im zweiten Ausbildungsjahr für Screen-Design, aber das Problem dabei ist, dass dort nur HTML, CSS und Druckdesign gelehrt wird. Deshalb habe ich in meiner Freizeit angefangen, das bereits erwähnte Zeug zu lernen, um meine Fähigkeiten zu verbessern.</p>
         </div>
 
-        <div class="ritem col-span-2 content-center justify-center max-sm:row-start-2 max-sm:row-end-3 max-sm:col-start-2 max-sm:col-end-3">
-          <h1 id="animLetters" class="z-10 text-7xl font-bold place-self-center pt-3 max-sm:text-3xl"> Hallo  Welt!</h1>
+        <div class="ritem max-sm:w-[47vw] col-span-2 content-center justify-center max-sm:row-start-2 max-sm:row-end-3 max-sm:col-start-2 max-sm:col-end-3">
+          <h1 id="animLetters" class="z-10 max-sm:p-0 text-7xl font-bold place-self-center pt-3 max-sm:text-3xl"> Hallo Welt!</h1>
         </div>
 
         <div class="ritem row-span-2 items-center justify-center
-                    max-sm:row-start-3 max-sm:row-end-5 max-sm:col-start-2 max-sm:col-end-3 max-sm:w-[auto ]">
+                    max-sm:row-start-3 max-sm:row-end-5 max-sm:col-start-2 max-sm:col-end-3 max-sm:w-[47vw]">
           <div class="clock text-6xl font-bold 
                       max-xl:rotate-90 max-xl:text-9xl max-xl:mr-6
                       max-sm:text-4xl max-sm:m-0">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="ritem flex flex-col justify-between col-span-3
-                    max-sm:row-start-2 max-sm:row-end-4 max-sm:col-start-1 max-sm:col-end-2">
+                    max-sm:row-start-2 max-sm:row-end-4 max-sm:col-start-1 max-sm:col-end-2 max-sm:w-[47vw]">
             <p class="z-10"> This is a place holder text for my new website writen with Tailwind</p>
             <a href="" class="z-10 btn">Click Me</a>
         </div>
