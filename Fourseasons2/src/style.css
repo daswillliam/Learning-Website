@@ -172,10 +172,36 @@ input:checked + .slider:before {
     z-index: -1;
 } */
 
-@media (max-width: 400px) {
-    #cursor-dot, #cursor-outline {
-        display: none;
-    }
+@media (max-width: 640px) {
 
+#cursor-dot, #cursor-outline {
+    display: none;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    left: 3px;
+    top: 3px;
+    background: var(--secondary-color);
+    transition: .5s;
+
+}
+
+input:checked + .slider {
+    background: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(35px);
+    background: var(--primary-color);
+}
+
+.slider.round:before {
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background: var(--secondary-color);
+}
 
 }
