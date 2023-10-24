@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    overflow: hidden;
+}
+
+body, a, button, input, textarea {
+    cursor: none !important;
+}
+
+#cursor-outline.hovered {
+    @apply h-8 w-8 transition-all bg-[--crosshair-color];
+}
+
+:root {
+    --primary-bg-color: #f4f3ef;
+    /* --primary-color: linear-gradient(to bottom right, #c0d8fe, #c9ddf2); */
+    --primary-color: #c0d8fe;
+    --secondary-color: #2d3b95;
+    --accent-color: #ffa30f;
+    --crosshair-color: #d89b00;
+}
+
+.darktheme {
+    --primary-bg-color: #101010;
+    --primary-color: #110582;
+    --secondary-color: #e6d4c6;
+    --accent-color: #0fff4f;
+    --crosshair-color: #eaff00;
+}
+
+.wrapper::before,
+.wrapper::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  mix-blend-mode: darken;
+  mix-blend-mode: difference;
+  mix-blend-mode: exclusion;
+  mix-blend-mode: multiply;
+}
+
+
+.crossline:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.crossline:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+body {
+    font-family: "greycliff-cf", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--secondary-color);
+    background: var(--primary-bg-color);
+    position: relative;
+    width: 100vw;
+    height: 100vh; 
+    /* z-index: 1; */
+}
+
+a p h1 h2 span {
+    z-index: 4;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://cliply.co/wp-content/uploads/2021/07/402107790_STATIC_NOISE_400.gif) repeat center;
+    mix-blend-mode: soft-light;
+    opacity: .25;
+    /* z-index: -1; */
+}
+
+.switch input {
+    display: none;
+}
+
+.ritem {
+    border-radius: 1.5rem;
+    object-fit: cover;
+    overflow: hidden;
+    align-self: center;
+    height: 100%; 
+    padding: 1.3rem;
+    background: var(--primary-color);
+    display: flex;
+    transition: transform 0.25s;
+}
+
+.btn {
+    margin-top: 2em;
+    width: max-content;
+    border-radius: 5em;
+    text-transform: uppercase;
+    padding: .5em 1em;
+    color:  var(--secondary-color);
+    @apply font-extrabold border-2 border-solid;
+    border-color: var(--secondary-color);
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    left: 5px;
+    top: 5px;
+    background: var(--secondary-color);
+    transition: .5s;
+
+}
+
+input:checked + .slider {
+    background: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(51px);
+    background: var(--primary-color);
+}
+
+.slider.round:before {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background: var(--secondary-color);
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.mono {
+    font-family: "input-mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.char {
+    opacity: 0;
+}
+
+.line {
+    padding-top: 1rem;
+}
+
+#animWords .word {
+    opacity: 0;
+}
+
+/* #item1 {
+    transform: translateX(0);
+    z-index: -1;
+} */
