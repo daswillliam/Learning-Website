@@ -15,6 +15,16 @@ window.addEventListener("mousemove", function (e) {
   }, {duration: 500, fill: "forwards"})
 });
 
+window.addEventListener("mousedown", function (e) {
+    if (e.button === 0) { // 0 steht für den linken Mausklick
+        cursorOutline.classList.add('clicked');
+    }
+});
+
+window.addEventListener("mouseup", function () {
+    cursorOutline.classList.remove('clicked');
+});
+
 const buttons = document.querySelectorAll('button, a, label, input, span');  // oder ein anderer Selektor für die gewünschten Elemente
 
 buttons.forEach(button => {

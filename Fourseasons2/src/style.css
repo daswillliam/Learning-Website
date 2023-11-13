@@ -6,24 +6,34 @@ body, a, button, input, textarea {
     cursor: none !important;
 }
 
-#cursor-outline.hovered {
-    @apply h-8 w-8 transition-all bg-[--crosshair-color];
+.clicked {
+    @apply w-16 h-16
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); translate: -50% -50%;}
+    100% { transform: rotate(360deg);  translate: -50% -50% }
+  }
+
+
+#cursor-outline{
+    transition: 0.17s ease; 
+    outline: none;
+    animation: spin 6s linear infinite;
 }
 
 :root {
-    --primary-bg-color: #f4f3ef;
-    --primary-color: #c0d8fe;
-    --secondary-color: #2d3b95;
-    --accent-color: #ffa30f;
-    --crosshair-color: #d89b00;
-}
-
-.darktheme {
     --primary-bg-color: #101010;
     --primary-color: #110582;
     --secondary-color: #e6d4c6;
     --accent-color: #0fff4f;
-    --crosshair-color: #eaff00;
+}
+
+.lighttheme {
+    --primary-bg-color: #f4f3ef;
+    --primary-color: #c0d8fe;
+    --secondary-color: #2d3b95;
+    --accent-color: #ffa30f;
 }
 
 .wrapper::before,
