@@ -2,24 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-body, a, button, input, textarea {
+body,
+a,
+button,
+input,
+textarea {
     cursor: none !important;
 }
 
-.clicked {
-    @apply w-16 h-16
+.clicked-outline {
+    transform: scale(2);
+}
+
+.clicked-ball {
+    @apply w-14 h-14 rounded-full;
+    height: 3.5rem !important;
+    width: 3.5rem !important;
+}
+
+#cursor-dot {
+    stroke: var(--crosshair-color);
+    mix-blend-mode: difference;
+}
+
+#cursor-ball {
+    transition: 0.2s ease;
+    mix-blend-mode: difference;
+    border-color: var(--crosshair-color);
+    height: 2rem;
+    width: 2rem;
+}
+
+#cursor-outline {
+    transition: 0.4s ease;
+    width: 2rem;
+    height: 2rem;
+    mix-blend-mode: difference;
+    animation: spin 6s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); translate: -50% -50%;}
-    100% { transform: rotate(360deg);  translate: -50% -50% }
-  }
+    0% {
+        transform: rotate(0deg); translate: -50% -50%;
+    }
+    100% {
+        transform: rotate(360deg);  translate: -50% -50%
+    }
+}
 
+.hovered-dot {
+    display: none;
+}
 
-#cursor-outline{
-    transition: 0.17s ease; 
-    outline: none;
-    animation: spin 6s linear infinite;
+.hovered-outline {
+    height: 4.5rem !important;
+    width: 4.5rem !important;
+    opacity: 100%;
+    fill: var(--accent-color);
+}
+
+.hovered-ball {
+    height: 3rem !important;
+    width: 3rem !important;
+    border-radius: 9999px;
+    border-width: 0px;
+    background-color: var(--accent-color);
 }
 
 :root {
@@ -27,6 +74,7 @@ body, a, button, input, textarea {
     --primary-color: #110582;
     --secondary-color: #e6d4c6;
     --accent-color: #0fff4f;
+    --crosshair-color: #ffffff;
 }
 
 .lighttheme {
@@ -34,30 +82,32 @@ body, a, button, input, textarea {
     --primary-color: #c0d8fe;
     --secondary-color: #2d3b95;
     --accent-color: #ffa30f;
+    --crosshair-color: #ffa30f;
 }
 
 .wrapper::before,
 .wrapper::after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  content: '';
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  mix-blend-mode: darken;
-  mix-blend-mode: difference;
-  mix-blend-mode: exclusion;
-  mix-blend-mode: multiply;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    mix-blend-mode: darken;
+    mix-blend-mode: difference;
+    mix-blend-mode: exclusion;
+    mix-blend-mode: multiply;
 }
-
 
 .crossline:nth-child(1) {
     transform: translate(-50%, -50%) rotate(0deg);
+    background-color: white;
 }
 
 .crossline:nth-child(2) {
     transform: translate(-50%, -50%) rotate(-90deg);
+    background-color: white;
 }
 
 body {
@@ -68,7 +118,7 @@ body {
     background: var(--primary-bg-color);
     position: relative;
     width: 100vw;
-    height: 100vh; 
+    height: 100vh;
     /* z-index: 1; */
 }
 
@@ -85,7 +135,7 @@ body::before {
     height: 100%;
     background: url(https://cliply.co/wp-content/uploads/2021/07/402107790_STATIC_NOISE_400.gif) repeat center;
     mix-blend-mode: soft-light;
-    opacity: .25;
+    opacity: 0.25;
     /* z-index: -1; */
 }
 
@@ -98,7 +148,7 @@ body::before {
     object-fit: cover;
     overflow: hidden;
     align-self: center;
-    height: 100%; 
+    height: 100%;
     padding: 1.3rem;
     background: var(--primary-color);
     display: flex;
@@ -111,8 +161,8 @@ body::before {
     border-radius: 5em;
     height: 3rem;
     text-transform: uppercase;
-    padding: .7em;
-    color:  var(--secondary-color);
+    padding: 0.7em;
+    color: var(--secondary-color);
     @apply font-extrabold border-2 border-solid;
     border-color: var(--secondary-color);
 }
@@ -129,8 +179,7 @@ body::before {
     left: 5px;
     top: 5px;
     background: var(--secondary-color);
-    transition: .5s;
-
+    transition: 0.5s;
 }
 
 input:checked + .slider {
@@ -156,7 +205,7 @@ input:checked + .slider:before {
 }
 
 .mono {
-    font-family: "input-mono", monospace;
+    font-family: "input-moo", monospace;
     font-weight: 400;
     font-style: normal;
 }
@@ -173,49 +222,62 @@ input:checked + .slider:before {
     opacity: 0;
 }
 
-/* #item1 {
-    transform: translateX(0);
-    z-index: -1;
-} */
-
 @media (max-width: 640px) {
 
-#cursor-dot, #cursor-outline {
-    display: none;
-}
+    .marquee {
+        display: none;
+        width: 0%;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    left: 3px;
-    top: 3px;
-    background: var(--secondary-color);
-    transition: .5s;
-    grid-template-columns: repeat(1, 2fr);
-}
+    body {
+        overflow: hidden;
+    }
 
-input:checked + .slider {
-    background: var(--secondary-color);
-}
+    #cursor-dot,
+    #cursor-outline {
+        display: none;
+    }
 
-input:checked + .slider:before {
-    transform: translateX(35px);
-    background: var(--primary-color);
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        left: 3px;
+        top: 3px;
+        background: var(--secondary-color);
+        transition: 0.5s;
+        grid-template-columns: repeat(1, 2fr);
+    }
 
-.slider.round:before {
-    width: 25px;
-    height: 25px;
-    border-radius: 50px;
-    background: var(--secondary-color);
-}
+    input:checked + .slider {
+        background: var(--secondary-color);
+    }
 
+    input:checked + .slider:before {
+        transform: translateX(35px);
+        background: var(--primary-color);
+    }
+
+    .slider.round:before {
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        background: var(--secondary-color);
+    }
 }
 
 @media only screen and (max-width: 900px) and (orientation: landscape) {
 
-    #cursor-dot, #cursor-outline {
+    #cursor-dot,
+    #cursor-outline {
         display: none;
+    }
+
+    .marquee {
+        display: none;
+    }
+
+    body {
+        overflow: hidden;
     }
 
     .ritem:nth-child(2) {
@@ -264,6 +326,17 @@ input:checked + .slider:before {
     .ritem:nth-child(4) {
         font-size: 5vw;
     }
+}
 
-  }
-  
+.marquee span {
+    animation: marquee-animation 20s linear infinite;
+}
+
+@keyframes marquee-animation {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
